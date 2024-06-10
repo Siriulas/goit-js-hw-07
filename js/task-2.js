@@ -26,14 +26,13 @@ const images = [
 ];
 
 const galleryList = document.querySelector(".gallery");
-const firstThreeImages = images.slice(0, 3);
 
-firstThreeImages.forEach((image) => {
-  galleryList.insertAdjacentHTML(
-    "beforeend",
-    `<li class="gallery-item"><img class="gallery-img" src=${image.url} alt=${image.alt} width="359px" height="300px"/></li>`
-  );
-});
+const galleryItemsHTML = images
+  .map((image) => {
+    return `<li class="gallery-item"><img class="gallery-img" src="${image.url}" alt="${image.alt}" width="359px" height="300px"/></li>`;
+  })
+  .join("");
+galleryList.insertAdjacentHTML("beforeend", galleryItemsHTML);
 
 galleryList.style.display = "flex";
 galleryList.style.listStyle = "none";
